@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 Vue.use(VueAxios, axios);
 Vue.use(BootstrapVue, BootstrapVueIcons );
+axios.defaults.baseURL = 'http://' + process.env.VUE_APP_ADDRESS + ':' + process.env.VUE_APP_SERVER_PORT;
+
 
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'

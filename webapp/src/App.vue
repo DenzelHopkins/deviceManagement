@@ -36,7 +36,7 @@
         },
         methods: {
             load: function() {
-                Vue.axios.get('https://' + process.env.VUE_APP_SERVER_NAME + ':' + process.env.VUE_APP_SERVER_PORT + '/api/commands').then((response) => {
+                Vue.axios.get('/api/commands').then((response) => {
                     console.log(response.data)
                     this.items = response.data;
                 });

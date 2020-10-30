@@ -160,7 +160,7 @@
         }
         // Add device
         if (this.helper){
-          Vue.axios.post('https://localhost:' + process.env.VUE_APP_SERVER_PORT + '/api/commands/', request)
+          Vue.axios.post('/api/commands/', request)
           .then(() => {
             this.$emit('reloadData')
           }); 
@@ -168,7 +168,7 @@
         // Edit Device
         else {
           var id = this.clicked.geräteID
-          Vue.axios.put('https://localhost:' + process.env.VUE_APP_SERVER_PORT + '/api/commands/' + id, request).then(() => {
+          Vue.axios.put('/api/commands/' + id, request).then(() => {
             this.$emit('reloadData')
           }); 
         }
@@ -189,7 +189,7 @@
       confirmDeletion(){
         this.$refs['deleteModal'].hide()
         var id = this.clicked.geräteID
-        Vue.axios.delete('https://localhost:' + process.env.VUE_APP_SERVER_PORT + '/api/commands/' + id).then(() => {
+        Vue.axios.delete('/api/commands/' + id).then(() => {
           this.$emit('reloadData')
         }); 
         this.hideDeleteModal()

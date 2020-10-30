@@ -6,19 +6,11 @@ services:
     ports:
     - "1433:1433"
     container_name: database
-    volumes:
-    - ${USERPROFILE}\Documents\devicemanagement\sqldata:/var/opt/mssql/data
   webserver:
     build:
       context: ./webserver
     environment:
-      ASPNETCORE_URLS: "https://+;http://+"
-      ASPNETCORE_HTTPS_PORT: "5001"
-      ASPNETCORE_Kestrel__Certificates__Default__Password: "password"
-      ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/https/webserver.pfx"
       ASPNETCORE_CONNECTION_STRING: "Server=database,1433;Initial Catalog=WebAppDB;User ID=sa;Password=Start.1245;" # connectionString to database
-    volumes:
-    - ${USERPROFILE}\.webserver\https:/app/https
     ports:
     - "5001:5001"
     container_name: webserver
@@ -27,7 +19,7 @@ services:
       context: ./webapp
     environment:
       VUE_APP_SERVER_PORT: "5001" # port of the webserver
-      VUE_APP_SERVER_NAME: "webserver" # name of the webserver
+      VUE_APP_SERVER_NAME: "localhost" # ip of the server
     ports:
-    - "8080:8080"
+    - "80:8080"
     container_name: webapp
